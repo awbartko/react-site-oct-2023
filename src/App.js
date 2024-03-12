@@ -9,14 +9,14 @@ function App() {
   const [parkingLotItems, setParkingLotItems] = useState([
     {
       id: nanoid(),
-      date: "2024-01-27",
+      date: "01/27/2024",
       priority: "Low", 
       link: "https://google.com/",
       description: "Ultimate source of truth.",
     },
     {
       id: nanoid(),
-      date: "2024-01-29",
+      date: "01/29/2024",
       priority: "Medium", 
       link: "https://react.dev/",
       description: "React documentation and tutorial",
