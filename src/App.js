@@ -1,27 +1,44 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import ParkingLotForm from './Components/ParkingLotForm/ParkingLotForm';
 import ParkingLotList from './Components/ParkingLotList/ParkingLotList';
 
+function getInitialState() {
+  let savedState = localStorage.getItem('items');
+  if (typeof savedState === 'string') {
+    return JSON.parse(savedState);
+  }
+  return [];
+}
+
 function App() {
   
-  const [parkingLotItems, setParkingLotItems] = useState([]);
+  const [parkingLotItems, setParkingLotItems] = useState(getInitialState());
+
+  function saveParkingLotItems() {
+    localStorage.setItem('items', JSON.stringify(parkingLotItems));
+  }
+
+  useEffect(saveParkingLotItems,[ parkingLotItems ]);
 
   function addItem(date, link, description, priority) {
-    setParkingLotItems(oldItems => [
-      ...oldItems,
-      {
-        id: nanoid(),
-        date,
-        link,
-        description,
-        priority,
-      }
+    setParkingLotItems((oldItems) => [
+        ...oldItems,
+        {
+          id: nanoid(),
+          date,
+          link,
+          description,
+          priority,
+        }
     ]);
   }
-  function deleteItem(id){
-    setParkingLotItems(oldItems => oldItems.filter(item => item.id !== id));
+
+  function deleteItem(id) {
+    setParkingLotItems(
+      (oldItems) => oldItems.filter(item => item.id !== id)
+    );
   }
 
   return (
