@@ -1,5 +1,9 @@
 # Browser Parking Lot
 
+Hosting: https://awbartko.github.io/react-site-oct-2023/
+
+Amber Bartko
+
 The objective of this project is to store useful links with a todo item that can be prioritized using the labels HIGH, MEDIUM, LOW.
 
 An item contains:
